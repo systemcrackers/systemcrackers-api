@@ -1,0 +1,28 @@
+{
+  "name": "systemcrackers-api",
+  "version": "0.0.1",
+  "description": "Backend for UIA Hackathon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/systemcrackers/systemcrackers-api.git"
+  },
+  "author": "blackchapel",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/systemcrackers/systemcrackers-api/issues"
+  },
+  "homepage": "https://github.com/systemcrackers/systemcrackers-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2",
+    "morgan": "^1.10.0"
+  }
+}
