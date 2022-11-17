@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const fs = require('fs');
 const dontenv = require('dotenv').config();
-const db = require('./configs/connection');
+const db = require('./configs/connection.config');
 
 // Initializing an express app
 const app = express();
