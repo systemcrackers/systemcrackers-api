@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 // APIs
-app.use('/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 
 // Test API
 app.get('/api', (req, res) => {
