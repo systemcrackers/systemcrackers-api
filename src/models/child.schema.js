@@ -3,24 +3,22 @@ const mongoose = require('mongoose');
 // Defining user schema
 const childSchema = new mongoose.Schema(
     {
+        parentId: {
+            type: String
+        },
         name: {
             type: String,
             trim: true
         },
+        sex: {
+            type: String,
+            enum: ['MALE', 'FEMALE']
+        },
         dob: {
             type: Date
         },
-        role: {
-            type: String,
-            enum: ['ADMIN', 'USER']
-        },
-        loginProvider: {
-            type: String,
-            enum: ['SYSTEM CRACKERS', 'GOOGLE']
-        },
-        isActivated: {
-            type: Boolean,
-            default: false
+        country: {
+            type: String
         },
         isdeleted: {
             type: Boolean,
