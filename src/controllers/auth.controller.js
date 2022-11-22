@@ -74,9 +74,9 @@ const signUp = async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
-            dob: req.body.dob,
+            dob: req.body.dateOfSignUp,
             role: 'USER',
-            loginProvider: 'CLOUD BIND',
+            loginProvider: 'SYSTEM CRACKERS',
             isActivated: false
         });
 

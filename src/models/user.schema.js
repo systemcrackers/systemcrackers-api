@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             trim: true
         },
-        dob: {
+        dateOfSignUp: {
             type: Date
         },
         profilePicture: {
