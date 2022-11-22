@@ -98,7 +98,6 @@ module.exports = {
     generateOtp,
     sendEmail,
     sendEmailOtp,
-    hashPassword,
     validatePassword,
     generateBearerToken
 };
