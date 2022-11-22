@@ -15,7 +15,7 @@ const childSchema = new mongoose.Schema(
             enum: ['MALE', 'FEMALE']
         },
         dob: {
-            type: Date
+            type: String
         },
         country: {
             type: String
