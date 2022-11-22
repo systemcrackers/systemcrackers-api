@@ -17,7 +17,7 @@ const authSchema = new mongoose.Schema(
                 },
                 loginProvider: {
                     type: String,
-                    enum: ['CLOUD BIND', 'GOOGLE']
+                    enum: ['SYSTEM CRACKERS', 'GOOGLE']
                 }
             }
         },

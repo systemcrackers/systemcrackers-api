@@ -63,7 +63,7 @@ const validatePassword = (password, hashPassword) => {
     return verify;
 };
 
-const generateBearerToken = async (user) => {
+const generateBearerToken = async (req, user) => {
     const token = jwt.sign({
         id: user._id,
         name: user.name,
@@ -89,9 +89,7 @@ const generateBearerToken = async (user) => {
         userAgent: req.headers['user-agent']
     }).save();
 
-    return {
-        token
-    };
+    return token;
 };
 
 module.exports = { 
