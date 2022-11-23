@@ -74,7 +74,7 @@ const signUp = async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
-            dob: new Date(),
+            dateOfSignUp: new Date(),
             role: 'USER',
             loginProvider: 'SYSTEM CRACKERS',
             isActivated: false
