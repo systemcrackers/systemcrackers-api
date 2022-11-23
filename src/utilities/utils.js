@@ -12,7 +12,7 @@ const generateOtp = (otpLength) => {
     return otp;
 };
 
-const sendEmail = async (toEmail, subject, body) => {
+const sendEmail = async (toEmail, subject, body, path) => {
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 587,
@@ -27,12 +27,27 @@ const sendEmail = async (toEmail, subject, body) => {
         },
     });
 
-    let mailOptions = {
-        from: process.env.NODEMAILER_EMAIL,
-        to:toEmail,
-        subject: subject,
-        text: body
-    };
+    let mailOptions;
+    if (path && path !== null) {
+        mailOptions = {
+            from: process.env.NODEMAILER_EMAIL,
+            to:toEmail,
+            subject: subject,
+            text: body,
+            attachments: [{
+                filename: 'report.pdf',
+                path: path,
+                attachments: 'application/pdf' 
+            }]
+        };
+    } else {
+        mailOptions = {
+            from: process.env.NODEMAILER_EMAIL,
+            to:toEmail,
+            subject: subject,
+            text: body
+        };
+    }
 
     await transporter.sendMail(mailOptions);
 };
@@ -41,7 +56,7 @@ const sendEmailOtp = async (req, user) => {
     const otp = generateOtp(6);
     const emailSubject = 'Verification Code';
     const emailBody = `Your verification code is ${otp}`;
-    await sendEmail(user.email, emailSubject, emailBody);
+    await sendEmail(user.email, emailSubject, emailBody, null);
 
     const auth = await new Auth({
         user: {
@@ -56,6 +71,13 @@ const sendEmailOtp = async (req, user) => {
     }).save();
 
     return auth;
+};
+
+const sendEmailAttachment = async (req, user, path) => {
+    const date = new Date();
+    const emailSubject = 'Diagnostic Report';
+    const emailBody = `PFA report of the diagnostic test taken on ${date}`;
+    await sendEmail(user.email, emailSubject, emailBody, path);    
 };
 
 const validatePassword = (password, hashPassword) => {
@@ -95,6 +117,7 @@ const generateBearerToken = async (req, user) => {
 module.exports = { 
     generateOtp,
     sendEmail,
+    sendEmailAttachment,
     sendEmailOtp,
     validatePassword,
     generateBearerToken

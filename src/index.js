@@ -8,6 +8,7 @@ const db = require('./configs/connection.config');
 // Importing routes
 const authRoutes = require('./routes/auth.route');
 const childRoutes = require('./routes/child.route');
+const diagnosticRoutes = require('./routes/diagnostic.route');
 const userRoutes = require('./routes/user.route');
 
 // Initializing an express app
@@ -27,6 +28,7 @@ app.use(morgan('dev'));
 // APIs
 app.use('/api/auth', authRoutes);
 app.use('/api/child', childRoutes);
+app.use('/api/diagnostic', diagnosticRoutes);
 app.use('/api/user', userRoutes);
 
 // Test API
