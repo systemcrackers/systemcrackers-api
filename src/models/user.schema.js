@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
         },
         role: {
             type: String,
-            enum: ['ADMIN', 'USER']
+            enum: ['ADMIN', 'USER', 'DOCTOR/EXPERT']
         },
         loginProvider: {
             type: String,
@@ -40,6 +40,18 @@ const userSchema = new mongoose.Schema(
         isdeleted: {
             type: Boolean,
             default: false
+        },
+        experience: {
+            type: String
+        },
+        specialisation: {
+            type: String
+        },
+        education: {
+            type: String
+        },
+        about: {
+            type: String
         }
     }, 
     { timestamps: true }

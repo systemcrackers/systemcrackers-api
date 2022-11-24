@@ -5,6 +5,33 @@ const pdf = require('pdfkit');
 const fs = require('fs');
 const { sendEmailAttachment } = require('./../utilities/utils');
 
+const diagnosticTestDraft = async (req, res) => {
+    try {
+        if (req.file) {
+            const imageUrl = await cloudinary.uploader.upload(req.file.path);
+
+            const diagnosticTest = new Diagnostic({
+                parentId: req.user.id,
+                handwritingImage: imageUrl,
+                dyslexiaResult: req.body.pred
+            })
+            await diagnosticTest.save();
+
+            res.status(201).json({
+                message: 'Draft saved'
+            });
+        } else {
+            res.status(400).json({
+                message: 'File not uploaded'
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
+}
+
 const diagnosticTest = async (req, res) => {
     try {
         // if (req.file) {
@@ -34,7 +61,8 @@ const diagnosticTest = async (req, res) => {
                 q9: req.body.q9,
                 a9: req.body.a9,
                 q10: req.body.q10,
-                a10: req.body.a10
+                a10: req.body.a10,
+                date: new Date()
             });
             
             const user = await User.findById(req.user.id);
@@ -104,6 +132,7 @@ const diagnosticReports = async(req, res) => {
 }
 
 module.exports = {
+    diagnosticTestDraft,
     diagnosticTest,
     diagnosticReports
 };

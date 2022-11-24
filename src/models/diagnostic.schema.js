@@ -71,6 +71,9 @@ const diagnosticSchema = new mongoose.Schema(
         },
         report: {
             type: String
+        },
+        date: {
+            type: Date
         }
     }, 
     { timestamps: true }
