@@ -14,7 +14,8 @@ const diagnosticTestDraft = async (req, res) => {
                 parentId: req.user.id,
                 handwritingImage: imageUrl.url,
                 dyslexiaResult: req.body.pred
-            })
+            });
+            console.log(diagnosticTest);
             await diagnosticTest.save();
 
             res.status(201).json({
@@ -34,7 +35,7 @@ const diagnosticTestDraft = async (req, res) => {
 
 const diagnosticTest = async (req, res) => {
     try {
-        // const diagnosticTest
+        // const diagnosticTest = 
         //     diagnosticTest.dyslexiaResult = req.body.dyslexiaResult;
         //     diagnosticTest.autismResult = req.body.autismResult;
         //     diagnosticTest.q1 = 'Does your child look at you when you call his/her name?';
